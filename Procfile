@@ -1,1 +1,1 @@
-web:npx concurrently \"npm run client\" \"npm run server\"
+web: npx concurrently \"npm run client\" \"npm run server\"
