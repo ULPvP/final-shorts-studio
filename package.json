@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "backend/server.js",
+  "type": "module",
   "scripts": {
     "client": "npm run build --prefix client",
     "server": "node backend/server.js",
