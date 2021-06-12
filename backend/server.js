@@ -46,8 +46,8 @@ if (process.env.NODE_ENV === 'production') {
 
 else {
 
-  app.use(express.static(path.resolve('../client/build')))
-  app.use(express.static(path.resolve(`../backend/images`)))
+  app.use('/',express.static(path.resolve('../client/build')))
+  app.use('/images',express.static(path.resolve(`../backend/images`)))
   
 
 }
