@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "client": "npm run build --prefix client",
-    "server": "npx nodemon backend/server.js",
+    "server": "node backend/server.js",
     "data:import": "node backend/seeder",
     "start": "npx concurrently \"npm run client\" \"npm run server\""
   },
