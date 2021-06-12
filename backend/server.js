@@ -49,11 +49,14 @@ else {
   app.use(express.static(__dirname + `/app/client/build/static`))
   app.use(express.static(__dirname + `/app/backend/images`))
   app.use(express.static(__dirname + '/app/client/build/manifest.json'))
-  app.use(res.sendFile(path.resolve(__dirname + '/app/client/build/images/studio.jpg')))
-  app.use(path.join(__dirname + '/app', '/client', '/build', '/index.html'))
+  app.use((req, res) => {
+    res.sendFile(path.resolve(__dirname + '/app/client/build/images/studio.jpg'))
+  })
+  app.use
+    (path.join(__dirname + '/app', '/client', '/build', '/index.html'))
 
 }
-
+ 
 // app.get('/', (req, res) => {
 
 //   res.sendFile(path.resolve(__dirname+'/client/build/index.html'))

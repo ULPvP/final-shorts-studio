@@ -6,10 +6,13 @@
   "type": "module",
   "root": "client/build/",
   "scripts": {
-    "client": "npm run build --prefix /client/",
-    "server": "npm start --prefix backend",
-    "data:import": "node backend/seeder",
-    "start": "concurrently \"npm run client\" \"npm run server\""
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "cd client && npm run build",
+    "install-client": "cd client && npm install",
+    "heroku-postbuild": "npm run install-client && npm run build",
+    "start": "node backend/server.js",
+    "client": "cd client && npm start",
+    "dev": "npx concurrently -n 'server,client' -c 'red,green'  \"nodemon server.js\" \"npm run client\""
   },
   "author": "",
   "license": "ISC",
