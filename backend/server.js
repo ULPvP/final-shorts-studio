@@ -46,12 +46,12 @@ if (process.env.NODE_ENV === 'production') {
 
 else {
 
-  app.use(express.static(`/client/build/static`))
-  app.use(express.static(`/backend/images`))
-  app.use(express.static('/client/build/manifest.json'))
-  app.use(express.static('/client/build/images/studio.jpg'))
+  app.use(express.static(`client/build/static`))
+  app.use(express.static(`backend/images`))
+  app.use(express.static('client/build/manifest.json'))
+  app.use(express.static('client/build/images/studio.jpg'))
   
-  app.use(express.static(`/client/build/index.html`))
+  app.use(express.static(`client/build/index.html`))
 
 }
  
