@@ -46,11 +46,11 @@ if (process.env.NODE_ENV === 'production') {
 
 else {
  
-  app.use('/static', express.static(__dirname + `/client/build/static`))
-  app.use('/images',express.static(__dirname + `/backend/images`))
-  app.use('/manifest.json', express.static(__dirname+'/client/build/manifest.json'))
+  app.use('/static', express.static(__dirname + `/app/client/build/static`))
+  app.use('/images',express.static(__dirname + `/app/backend/images`))
+  app.use('/manifest.json', express.static(__dirname+'/app/client/build/manifest.json'))
   app.use('/studio.jpg',(req,res) =>{
-    res.sendFile(path.resolve(__dirname+'/client/build/images/studio.jpg'))
+    res.sendFile(path.resolve(__dirname+'/app/client/build/images/studio.jpg'))
   })
   app.use('/', (req,res) =>{
     res.sendFile(path.join(__dirname+'/app','/client','/build','/index.html'))
