@@ -53,7 +53,7 @@ else {
     res.sendFile(path.resolve(__dirname + '/app/client/build/images/studio.jpg'))
   })
   app.use
-    (path.join(__dirname + '/app', '/client', '/build', '/index.html'))
+    (path.join(__dirname + '/app'+'/client'+ '/build'+ '/index.html'))
 
 }
  
