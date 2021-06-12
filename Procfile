@@ -1,0 +1,1 @@
+web:npx concurrently \"npm run client\" \"npm run server\"
