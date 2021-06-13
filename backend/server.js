@@ -40,35 +40,35 @@ if (process.env.NODE_ENV === 'production') {
   // app.use(express.static(path.join(__dirname, '/frontend/build')))
 
   app.get('*', (req, res) =>
-    res.sendFile(path.resolve(__dirname+ '/client/build/index.html'))
+    res.sendFile(path.resolve(__dirname + '/client/build/index.html'))
   )
-  app.use('/static',express.static(path.join(__dirname+'/client','/build','/static')))
-  app.use('/images',express.static(path.join(__dirname+`/backend`,`/images`)))
-  app.use('/logo192.png',(req,res)=>{
-    res.sendFile(path.join(__dirname+'/backend','/images','/studio.jpg'))
+  app.use('/static', express.static(path.join(__dirname + '/client', '/build', '/static')))
+  app.use('/images', express.static(path.join(__dirname + `/backend`, `/images`)))
+  app.use('/logo192.png', (req, res) => {
+    res.sendFile(path.join(__dirname + '/backend', '/images', '/studio.jpg'))
 
   })
-  app.use('/manifest.json',(req,res) =>{
-    res.sendFile(path.join(__dirname+'/client','/build','/manifest.json'))
+  app.use('/manifest.json', (req, res) => {
+    res.sendFile(path.join(__dirname + '/client', '/build', '/manifest.json'))
   })
   app.get('/', (req, res) => {
 
-    res.sendFile(path.join(__dirname,'/client','/build','/index.html'))
-    console.log(__dirname+'/client/build/index.html')
+    res.sendFile(path.join(__dirname, '/client', '/build', '/index.html'))
+    console.log(__dirname + '/client/build/index.html')
   })
 
 }
 
 else {
+  app.get('/', (req, res) => {
+    res.send('目前正在維護')
+  })
 
-  res.send('目前正在維護')
 
-
-  
 
 }
 //
- 
+
 
 
 
