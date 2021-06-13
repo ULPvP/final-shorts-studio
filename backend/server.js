@@ -42,10 +42,6 @@ if (process.env.NODE_ENV === 'production') {
   app.get('*', (req, res) =>
     res.sendFile(path.resolve(__dirname+ '/client/build/index.html'))
   )
-}
-
-else {
-
   app.use('/static',express.static(path.join(__dirname+'/client','/build','/static')))
   app.use('/images',express.static(path.join(__dirname+`/backend`,`/images`)))
   app.use('/logo192.png',(req,res)=>{
@@ -55,6 +51,17 @@ else {
   app.use('/manifest.json',(req,res) =>{
     res.sendFile(path.join(__dirname+'/client','/build','/manifest.json'))
   })
+  app.get('/', (req, res) => {
+
+    res.sendFile(path.join(__dirname,'/client','/build','/index.html'))
+    console.log(__dirname+'/client/build/index.html')
+  })
+
+}
+
+else {
+
+  res.send('目前正在維護')
 
 
   
@@ -62,11 +69,7 @@ else {
 }
 //
  
-app.get('/', (req, res) => {
 
-  res.sendFile(path.join(__dirname,'/client','/build','/index.html'))
-  console.log(__dirname+'/client/build/index.html')
-})
 
 
 
@@ -85,3 +88,4 @@ app.listen(
 process.on('uncaughtException', function (err) {
   console.log(err);
 });
+
