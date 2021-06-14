@@ -52,9 +52,9 @@ if (process.env.NODE_ENV === 'production') {
   app.use('/manifest.json', (req, res) => {
     res.sendFile(path.join(__dirname + '/client', '/build', '/manifest.json'))
   })
-  app.get('/', (req, res) => {
+  app.use('/', (req, res) => {
 
-    res.sendFile(path.join(__dirname, '/client', '/build'))
+    express.static(path.join(__dirname, '/client', '/build'))
     console.log(__dirname + '/client/build/index.html')
   })
 
