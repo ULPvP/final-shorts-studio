@@ -42,8 +42,8 @@ if (process.env.NODE_ENV === 'production') {
   app.get('*', (req, res) =>
     res.sendFile(path.resolve(__dirname + '/client/build/index.html'))
   )
-  app.use('/static/css', express.static(path.join(__dirname + '/client', '/build', '/static','/css')))
-  app.use('/static/js', express.static(path.join(__dirname + '/client', '/build', '/static','/js')))
+  app.use(express.static(path.join(__dirname + '/client', '/build', '/static','/css')))
+  app.use(express.static(path.join(__dirname + '/client', '/build', '/static','/js')))
   app.use('/images', express.static(path.join(__dirname + `/backend`, `/images`)))
   app.use('/logo192.png', (req, res) => {
     res.sendFile(path.join(__dirname + '/backend', '/images', '/studio.jpg'))
