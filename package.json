@@ -12,7 +12,9 @@
     "heroku-postbuild": "npm run install-client && npm run build",
     "server": "npx nodemon backend/server.js",
     "client": "cd client && npm start",
-    "start": "npm run server"
+    "start": "npm run server",
+    "data:import": "node backend/seeder",
+    "data:destroy": "node backend/seeder -d"
   },
   "author": "",
   "license": "ISC",
