@@ -144,7 +144,7 @@ const ProductScreen = ( { history, match } ) => {
     <>
 
       <Link className='btn btn-light my-3' to='/'>
-        Go Back
+        返回
       </Link>
       { loading ? (
         <Loader />
@@ -166,13 +166,13 @@ const ProductScreen = ( { history, match } ) => {
                 <ListGroup.Item>
                   <Rating
                     value={ product.rating }
-                    text={ `${ product.numReviews } reviews` }
+                    text={ `${ product.numReviews } 評價` }
                   />
                 </ListGroup.Item>
 
                 <ListGroup.Item>Price: ${ tempPrice }</ListGroup.Item>
                 <ListGroup.Item>
-                  Description: { product.description }
+                  簡介: { product.description }
                 </ListGroup.Item>
               </ListGroup>
             </Col>
@@ -189,7 +189,7 @@ const ProductScreen = ( { history, match } ) => {
 
                   <ListGroup.Item>
                     <Row>
-                      <Col>Price:</Col>
+                      <Col>價錢:</Col>
                       <Col>
                         <strong>${ tempPrice }</strong>
                       </Col>
@@ -198,9 +198,9 @@ const ProductScreen = ( { history, match } ) => {
 
                   <ListGroup.Item>
                     <Row>
-                      <Col>Status:</Col>
+                      <Col>銷售狀態:</Col>
                       <Col>
-                        { product.countInStock > 0 ? 'In Stock' : 'Out Of Stock' }
+                        { product.countInStock > 0 ? '有貨' : '售罄' }
                       </Col>
                     </Row>
                   </ListGroup.Item>
@@ -208,7 +208,7 @@ const ProductScreen = ( { history, match } ) => {
                   { product.countInStock > 0 && (
                     <ListGroup.Item>
                       <Row>
-                        <Col>Qty</Col>
+                        <Col>數量</Col>
                         <Col>
                           <Form.Control
                             as='select'
@@ -246,7 +246,7 @@ const ProductScreen = ( { history, match } ) => {
                       type='button'
                       disabled={ product.countInStock === 0 }
                     >
-                      Add To Cart
+                      新增至購物車
                     </Button>
                   </ListGroup.Item>
                 </ListGroup>
@@ -255,7 +255,7 @@ const ProductScreen = ( { history, match } ) => {
           </Row>
           <Row>
             <Col md={ 6 }>
-              <h2>Reviews</h2>
+              <h2>評價</h2>
               { product.reviews.length === 0 && <Message>No Reviews</Message> }
               <ListGroup variant='flush'>
                 { product.reviews.map( ( review ) => (
@@ -267,10 +267,10 @@ const ProductScreen = ( { history, match } ) => {
                   </ListGroup.Item>
                 ) ) }
                 <ListGroup.Item>
-                  <h2>Write a Customer Review</h2>
+                  <h2>撰寫評論</h2>
                   { successProductReview && (
                     <Message variant='success'>
-                      Review submitted successfully
+                     成功上傳
                     </Message>
                   ) }
                   { loadingProductReview && <Loader /> }
@@ -286,12 +286,12 @@ const ProductScreen = ( { history, match } ) => {
                           value={ rating }
                           onChange={ ( e ) => setRating( e.target.value ) }
                         >
-                          <option value=''>Select...</option>
-                          <option value='1'>1 - Poor</option>
-                          <option value='2'>2 - Fair</option>
-                          <option value='3'>3 - Good</option>
-                          <option value='4'>4 - Very Good</option>
-                          <option value='5'>5 - Excellent</option>
+                          <option value=''>選擇</option>
+                          <option value='1'>1 - 十分差勁</option>
+                          <option value='2'>2 - 差勁</option>
+                          <option value='3'>3 - 中等</option>
+                          <option value='4'>4 - 優質</option>
+                          <option value='5'>5 - 十分優質</option>
                         </Form.Control>
                       </Form.Group>
                       <Form.Group controlId='comment'>
@@ -308,12 +308,12 @@ const ProductScreen = ( { history, match } ) => {
                         type='submit'
                         variant='primary'
                       >
-                        Submit
+                        提交
                       </Button>
                     </Form>
                   ) : (
                     <Message>
-                      Please <Link to='/login'>sign in</Link> to write a review{ ' ' }
+                      Please <Link to='/login'>請登入</Link> 再撰寫評論{ ' ' }
                     </Message>
                   ) }
                 </ListGroup.Item>

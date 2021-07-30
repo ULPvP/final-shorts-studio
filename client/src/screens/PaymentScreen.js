@@ -26,14 +26,14 @@ const PaymentScreen = ({ history }) => {
   return (
     <FormContainer>
       <CheckoutSteps step1 step2 step3 />
-      <h1>Payment Method</h1>
+      <h1>付款方式</h1>
       <Form onSubmit={submitHandler}>
         <Form.Group>
-          <Form.Label as='legend'>Select Method</Form.Label>
+          <Form.Label as='legend'>選擇付款方式</Form.Label>
           <Col>
             <Form.Check
               type='radio'
-              label='AlipayHK'
+              label='AlipayHK(支付寶HK)'
               id='AlipayHK'
               name='paymentMethod'
               value='AlipayHK'
@@ -45,7 +45,7 @@ const PaymentScreen = ({ history }) => {
         </Form.Group>
 
         <Button type='submit' variant='primary'>
-          Continue
+          繼續
         </Button>
       </Form>
     </FormContainer>

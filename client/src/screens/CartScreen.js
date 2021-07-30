@@ -102,8 +102,8 @@ const CartScreen = ( { match, location, history } ) => {
           <ListGroup variant='flush'>
             <ListGroup.Item>
               <h2>
-                Subtotal ({ cartItems.reduce( ( acc, item ) => acc + item.qty, 0 ) })
-                items
+                小計 ({ cartItems.reduce( ( acc, item ) => acc + item.qty, 0 ) })
+                個貨品
               </h2>
               $
               { cartItems
@@ -117,7 +117,7 @@ const CartScreen = ( { match, location, history } ) => {
                 disabled={ cartItems.length === 0 }
                 onClick={ checkoutHandler }
               >
-                Proceed To Checkout
+                進行結賬
               </Button>
             </ListGroup.Item>
           </ListGroup>
