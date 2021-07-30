@@ -1,6 +1,10 @@
 {
   "name": "frontend",
   "proxy": "http://127.0.0.1:5000",
+  "engines": {
+    "node": "14.17.0",
+    "yarn": "1.22.10"
+  },
   "version": "0.1.0",
   "private": true,
   "dependencies": {
