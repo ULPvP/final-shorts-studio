@@ -44,12 +44,14 @@ const OrderScreen = ({ match, history }) => {
     order.itemsPrice = addDecimals(
       order.orderItems.reduce((acc, item) => acc + item.price * item.qty, 0)
     )
+    
   }
 
   useEffect(() => {
     if (!userInfo) {
       history.push('/login')
     }
+  
 
     const addPayPalScript = async () => {
       const { data: clientId } = await axios.get('/api/config/paypal')
@@ -97,7 +99,7 @@ const OrderScreen = ({ match, history }) => {
           <ListGroup variant='flush'>
             <ListGroup.Item>
             <h1 id="topic-guide">已收到你的訂單，請先開支付寶HK掃描QR-Code，我們會在確認你已經付款後立即進行代儲，感謝您的等待</h1>
-              <img id="qr-code" src="https://i.imgur.com/czqDcf7.png"></img>
+              <img id="qr-code" src="https://i.imgur.com/wNKrLX7.jpg"></img>
               <h2>Shipping</h2>
               
               <p>

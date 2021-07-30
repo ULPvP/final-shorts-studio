@@ -11,7 +11,7 @@ import { PRODUCT_UPDATE_RESET } from '../constants/productConstants'
 
 const ProductEditScreen = ({ match, history }) => {
   const productId = match.params.id
-
+  const [choicesObj,setChoicesObj] = useState()
   const [name, setName] = useState('')
   const [price, setPrice] = useState(0)
   const [image, setImage] = useState('')
@@ -48,6 +48,7 @@ const ProductEditScreen = ({ match, history }) => {
         setCategory(product.category)
         setCountInStock(product.countInStock)
         setDescription(product.description)
+        setChoicesObj(product.choicesObj)
       }
     }
   }, [dispatch, history, productId, product, successUpdate])
@@ -76,6 +77,10 @@ const ProductEditScreen = ({ match, history }) => {
   }
 
   const submitHandler = (e) => {
+
+    // const choice_obj = choicesObj.map(result => result)
+
+   console.log(choicesObj)
     e.preventDefault()
     dispatch(
       updateProduct({
@@ -87,10 +92,34 @@ const ProductEditScreen = ({ match, history }) => {
         category,
         description,
         countInStock,
+        choicesObj,
       })
     )
+    console.log(choicesObj)
   }
 
+  const [inputList, setInputList] = useState([{ choice: "", price: "" }]);
+
+  // handle input change
+  const handleInputChange = (e, index) => {
+    const { name, value } = e.target;
+    const list = [...inputList];
+    list[index][name] = value;
+    setInputList(list);
+    setChoicesObj(JSON.stringify(inputList))
+  };
+
+  // handle click event of the Remove button
+  const handleRemoveClick = index => {
+    const list = [...inputList];
+    list.splice(index, 1);
+    setInputList(list);
+  };
+
+  // handle click event of the Add button
+  const handleAddClick = () => {
+    setInputList([...inputList, { choice: "", price: "" }]);
+  };
   return (
     <>
       <Link to='/admin/productlist' className='btn btn-light my-3'>
@@ -182,6 +211,33 @@ const ProductEditScreen = ({ match, history }) => {
                 onChange={(e) => setDescription(e.target.value)}
               ></Form.Control>
             </Form.Group>
+         
+            {inputList.map((x, i) => {
+        return (
+          <div className="box" key="">
+            <input
+              name="choice"
+              placeholder="選擇"
+              value={x.choice}
+              onChange={e => handleInputChange(e, i)}
+            />
+            <input
+              className="ml10"
+              name="price"
+              placeholder="價錢"
+              value={x.price}
+              onChange={e => handleInputChange(e, i)}
+            />
+            <div className="btn-box">
+              {inputList.length !== 1 && <button
+                className="mr10"
+                onClick={() => handleRemoveClick(i)}>Remove</button>}
+              {inputList.length - 1 === i && <button onClick={handleAddClick}>Add</button>}
+            </div>
+          </div>
+        );
+      })}
+       
 
             <Button type='submit' variant='primary'>
               Update
