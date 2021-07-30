@@ -46,7 +46,7 @@ if (process.env.NODE_ENV !== 'dev') {
 
 
 
-}
+
 
 else {
   app.get('/', (req, res) => {
