@@ -64,6 +64,12 @@ const productSchema = mongoose.Schema(
       required: true,
       default: 0,
     },
+    
+    choicesObj: {
+      type: Object,
+      required: true,
+      default:0,
+    },
   },
   {
     timestamps: true,
