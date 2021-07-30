@@ -36,25 +36,13 @@ const __dirname = path.resolve()
 console.log(__dirname + `/static`)
 app.use('/uploads', express.static(path.join(__dirname, '/uploads')))
 
-if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV !== 'dev') {
   // app.use(express.static(path.join(__dirname, '/frontend/build')))
-  app.use(express.static(path.join(__dirname + '/client', '/build')))
-  app.get('*', (req, res) =>
-  res.sendFile(path.join(__dirname,'/client/build', '/index.html'))
-  )
-  app.get('/static/css',express.static(path.join(__dirname + '/client', '/build', '/static','/css')))
-  app.get('/static/css',express.static(path.join(__dirname + '/client', '/build', '/static','/js')))
-  app.use('/images', express.static(path.join(__dirname + `/backend`, `/images`)))
-  app.use('/logo192.png', (req, res) => {
-    res.sendFile(path.join(__dirname + '/backend', '/images', '/studio.jpg'))
-
-  })
-  app.use('/manifest.json', (req, res) => {
-    res.sendFile(path.join(__dirname + '/client', '/build', '/manifest.json'))
-  })
-  app.get('/', function(req, res) {
-    res.sendFile(path.join(__dirname,'/client/build', '/index.html'));
-  });
+//   app.use(express.static(path.join(__dirname + '/client', '/build')))
+   
+//   app.use('/', express.static(path.join(__dirname,'/client/build', '/index.html'));
+//   });
+    app.use('/', express.static(path.join(__dirname,'/client/build')))};
 
 
 
