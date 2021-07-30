@@ -7,13 +7,11 @@
     "node": "14.17.0",
     "yarn": "1.22.10"
   },
-  
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "cd client && npm run build",
-    "install-client": "cd client && npm install",
     "heroku-postbuild": "npm run install-client && npm run build",
-    "server": "npx nodemon backend/server.js",
+    "server": "node backend/server.js",
     "client": "cd client && npm start",
     "start": "npm run server",
     "data:import": "node backend/seeder",
