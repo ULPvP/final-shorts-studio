@@ -10,6 +10,7 @@ import Select from 'react-select'
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 
+
 import { addToCart, addToPrice } from '../actions/cartActions'
 import {
   listProductDetails,
@@ -23,6 +24,7 @@ const ProductScreen = ( { history, match } ) => {
   const [ qty, setQty ] = useState( 1 )
   const [ rating, setRating ] = useState( 0 )
   const [ comment, setComment ] = useState( '' )
+  const [ cartLimit, setCartLimit ] = useState( '' )
 
 
   const dispatch = useDispatch()
@@ -59,6 +61,7 @@ const ProductScreen = ( { history, match } ) => {
   } )
   const cart = useSelector( ( state ) => state.cart )
   const { cartItems } = cart
+  const isMoreThanOne = cartItems.length >= 1
 
 
   const choice_list = choiceJson.map( item => Object.values( item )[ 0 ] )
@@ -109,20 +112,14 @@ const ProductScreen = ( { history, match } ) => {
       setEquals0( "請先選擇選項，再加入購物車" );
 
     }
+    else if(isMoreThanOne){
+      setCartLimit("每次限買一項產品，如果想結賬或刪除，請至購物車")
+    }
     else {
 
       console.log( tempPrice )
-     
-       
-
-        
-        history.push( `/cart/${ match.params.id }?qty=${ qty }?option=${option}` )
-        //setTempPrice( tempPrice )
-
-
-
-  
-      
+      history.push( `/cart/${ match.params.id }?qty=${ qty }?option=${ option }` )
+      //setTempPrice( tempPrice )
     }
   }
   const submitHandler = ( e ) => {
@@ -184,8 +181,8 @@ const ProductScreen = ( { history, match } ) => {
                 <ListGroup variant='flush'>
                   <ListGroup.Item>
                     <Row>
-
                       <strong id="equals0" style={ { color: 'red', fontWeight: 'bold' } } >{ equals0 }</strong>
+                      <strong id="moreThanOne" style={ { color: 'red', fontWeight: 'bold' } } >{ cartLimit }</strong>
 
                     </Row>
                   </ListGroup.Item>
@@ -218,7 +215,7 @@ const ProductScreen = ( { history, match } ) => {
                             value={ qty }
                             onChange={ ( e ) => setQty( e.target.value ) }
                           >
-                            { [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25 ].map(
+                            { [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25 ].map(
                               ( x ) => (
                                 <option key={ x + 1 } value={ x + 1 }>
                                   { x + 1 }

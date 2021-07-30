@@ -9,7 +9,7 @@ import axios from 'axios';
 import { saveShippingAddress } from '../actions/cartActions'
 const CartScreen = ( { match, location, history } ) => {
   const pre_url_id = window.location.pathname.split( 'cart/' )[ 1 ]
-  const url_id = pre_url_id.split( "?" )[ 0 ]
+  const url_id = /*pre_url_id.split( "?" )[ 0 ]*/ match.params.id
   const [ choiceJson, setChoiceJson ] = useState( [] )
   const productId = match.params.id
   const pre_qty = location.search.split( '=' )[ 1 ]
@@ -75,7 +75,7 @@ const CartScreen = ( { match, location, history } ) => {
                         )
                       }
                     >
-                      { [ ...Array( item.countInStock ).keys() ].map( ( x ) => (
+                      { [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25 ].map( ( x ) => (
                         <option key={ x + 1 } value={ x + 1 }>
                           { x + 1 }
                         </option>

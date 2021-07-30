@@ -1,4 +1,4 @@
-import React, { useEffect,state } from 'react'
+import React, { useEffect,useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Button, Row, Col, ListGroup, Image, Card } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
@@ -8,10 +8,19 @@ import { createOrder } from '../actions/orderActions'
 import { ORDER_CREATE_RESET } from '../constants/orderConstants'
 import { USER_DETAILS_RESET } from '../constants/userConstants'
 import "./payment.css"
+import axios from 'axios'
 const PlaceOrderScreen = ({ history }) => {
-  const dispatch = useDispatch()
-  
   const cart = useSelector((state) => state.cart)
+  const dispatch = useDispatch()
+  const [ choiceJson, setChoiceJson ] = useState( [] )
+  axios.get( `/api/products/${ cart.item }` ).then( res => {
+    setChoiceJson( JSON.parse( res.data.choicesObj ) )
+  } )
+  // const price_list = choiceJson.map( item => Object.values( item )[ 1 ] )
+  // const thePrice = cartItems
+  console.log(cart)
+  
+ 
 
   if (!cart.shippingAddress.address) {
     history.push('/shipping')
@@ -35,10 +44,10 @@ const PlaceOrderScreen = ({ history }) => {
 
   const orderCreate = useSelector((state) => state.orderCreate)
   const { order, success, error } = orderCreate
-
+ 
   useEffect(() => {
     if (success) {
-      history.push(`/order/${order._id}`)
+      history.push(`/order/${order._id}`) 
       dispatch({ type: USER_DETAILS_RESET })
       dispatch({ type: ORDER_CREATE_RESET })
     }
@@ -163,7 +172,7 @@ const PlaceOrderScreen = ({ history }) => {
                   disabled={cart.cartItems === 0}
                   onClick={placeOrderHandler}
                 >
-                  Place Order
+                  前往付款
                 </Button>
               </ListGroup.Item>
             </ListGroup>
