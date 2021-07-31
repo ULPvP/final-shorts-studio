@@ -17,8 +17,12 @@ connectDB()
 
 const app = express()
 
-if ( process.env.NODE_ENV === 'development' ) {
+if ( process.env.NODE_ENV === 'dev' ) {
   app.use( morgan( 'dev' ) )
+  app.get( '*', ( req, res ) => {
+    res.send( '目前正在維護' )
+  } )
+
 }
 
 app.use( express.json() )
@@ -36,26 +40,11 @@ const __dirname = path.resolve()
 console.log( __dirname + `/static` )
 app.use( '/uploads', express.static( path.join( __dirname, '/uploads' ) ) )
 
-if ( process.env.NODE_ENV !== 'dev' ) {
-  // app.use(express.static(path.join(__dirname, '/frontend/build')))
-  //   app.use(express.static(path.join(__dirname + '/client', '/build')))
-
-  //   app.use('/', express.static(path.join(__dirname,'/client/build', '/index.html'));
-  //   });
-  app.use('/',express.static( path.join( __dirname, '/client/build' ) ) )
-
-  app.use( express.static( path.join( __dirname, '/client/build' ) ) )
-}
+app.use('*',express.static( path.join( __dirname, '/client/build' ) ) )
+ app.use('/',express.static( path.join( __dirname, '/client/build' ) ) )
+ app.use( express.static( path.join( __dirname, '/client/build' ) ) )
 
 
-else {
-  app.get( '/', ( req, res ) => {
-    res.send( '目前正在維護' )
-  } )
-
-
-
-}
 //
 
 app.use( notFound )
