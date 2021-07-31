@@ -42,7 +42,19 @@ if ( process.env.NODE_ENV !== 'dev' ) {
 
   //   app.use('/', express.static(path.join(__dirname,'/client/build', '/index.html'));
   //   });
-  app.use('/',express.static( path.join( __dirname, '/client/build' ) ) )
+    app.use('/',express.static( path.join( __dirname, '/client/build' ) ) )
+  app.use('/login',express.static( path.join( __dirname, '/client/build' ) ) )
+  app.use('/product',express.static( path.join( __dirname, '/client/build' ) ) )
+  app.use('/placeorder',express.static( path.join( __dirname, '/client/build' ) ) )
+  app.use('/payment',express.static( path.join( __dirname, '/client/build' ) ) )
+  app.use('/shipping',express.static( path.join( __dirname, '/client/build' ) ) )
+  app.use('/cart',express.static( path.join( __dirname, '/client/build' ) ) )
+  app.use('/profile',express.static( path.join( __dirname, '/client/build' ) ) )
+  app.use('/register',express.static( path.join( __dirname, '/client/build' ) ) )
+  app.use('/search',express.static( path.join( __dirname, '/client/build' ) ) )
+
+
+
 
   app.use( express.static( path.join( __dirname, '/client/build' ) ) )
 }
