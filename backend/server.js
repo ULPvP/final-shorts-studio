@@ -39,7 +39,7 @@ if (process.env.NODE_ENV !== 'dev') {
   app.use(express.static( path.join( __dirname, '/client/build' ) ))
 
   app.get('*', (req, res) =>
-    res.sendFile(express.static( path.join( __dirname, '/client/build' ) ))
+    res.sendFile(path.join( __dirname, '/client/build' ) )
   )
   app.use('/',express.static( path.join( __dirname, '/client/build' ) ))
 } 
