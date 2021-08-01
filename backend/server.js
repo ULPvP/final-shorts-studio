@@ -47,10 +47,10 @@ if (process.env.NODE_ENV !== 'dev') {
 app.use(notFound)
 app.use(errorHandler)
 
-const PORT = 5000
+
 
 app.listen(
-  PORT,
+  process.env.PORT || 80,
   console.log(
     `Server running in ${process.env.NODE_ENV} mode on port ${PORT}`.yellow.bold
   )
