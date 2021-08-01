@@ -10,7 +10,7 @@ import productRoutes from './routes/productRoutes.js'
 import userRoutes from './routes/userRoutes.js'
 import orderRoutes from './routes/orderRoutes.js'
 import uploadRoutes from './routes/uploadRoutes.js'
-// import {createProxyMiddleware} from 'http-proxy-middleware'
+import {createProxyMiddleware} from 'http-proxy-middleware'
 dotenv.config()
 
 connectDB()
