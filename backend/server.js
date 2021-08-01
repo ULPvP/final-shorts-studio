@@ -18,17 +18,18 @@ connectDB()
 const app = express()
 
 const __dirname = path.resolve()
-if ( process.env.NODE_ENV === 'dev' ) {
+if ( process.env.NODE_ENV === 'production' ) {
+  app.use(express.static( path.join( __dirname, '/client/build' ) ) )
+  app.use('/' ,express.static( path.join( __dirname, '/client/build' ) ) )
+  app.use('*' ,express.static( path.join( __dirname, '/client/build' ) ) )
+
+}
+else if(process.env.NODE_ENV === 'dev' ){
   app.use( morgan( 'dev' ) )
   app.get( '*', ( req, res ) => {
     res.send( '目前正在維護' )
   } )
-
-}
-else{
-  app.use(express.static( path.join( __dirname, '/client/build' ) ) )
-  app.use('/' ,express.static( path.join( __dirname, '/client/build' ) ) )
-  app.use('*' ,express.static( path.join( __dirname, '/client/build' ) ) )
+ 
 }
 
 app.use( express.json() )
