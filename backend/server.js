@@ -17,12 +17,18 @@ connectDB()
 
 const app = express()
 
+const __dirname = path.resolve()
 if ( process.env.NODE_ENV === 'dev' ) {
   app.use( morgan( 'dev' ) )
   app.get( '*', ( req, res ) => {
     res.send( '目前正在維護' )
   } )
 
+}
+else{
+  app.use(express.static( path.join( __dirname, '/client/build' ) ) )
+  app.use('/' ,express.static( path.join( __dirname, '/client/build' ) ) )
+  app.use('*' ,express.static( path.join( __dirname, '/client/build' ) ) )
 }
 
 app.use( express.json() )
@@ -36,13 +42,9 @@ app.get( '/api/config/paypal', ( req, res ) =>
   res.send( process.env.PAYPAL_CLIENT_ID )
 )
 
-const __dirname = path.resolve()
-console.log( __dirname + `/static` )
 app.use( '/uploads', express.static( path.join( __dirname, '/uploads' ) ) )
 
-app.use('*',express.static( path.join( __dirname, '/client/build' ) ) )
- app.use('/',express.static( path.join( __dirname, '/client/build' ) ) )
- app.use( express.static( path.join( __dirname, '/client/build' ) ) )
+
 
 
 //
