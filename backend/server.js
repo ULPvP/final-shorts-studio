@@ -36,12 +36,12 @@ const __dirname = path.resolve()
 app.use('/uploads', express.static(path.join(__dirname, '/uploads')))
 
 if (process.env.NODE_ENV !== 'dev') {
-  app.use(express.static(path.join(__dirname, '../client/build')))
+  app.use(express.static( path.join( __dirname, '/client/build' ) ))
 
   app.get('*', (req, res) =>
-    res.sendFile(path.resolve(__dirname, '../','client', 'build', 'index.html'))
+    res.sendFile(express.static( path.join( __dirname, '/client/build' ) ))
   )
-  app.use('/',express.static(path.resolve('../client/build')))
+  app.use('/',express.static( path.join( __dirname, '/client/build' ) ))
 } 
 
 app.use(notFound)
