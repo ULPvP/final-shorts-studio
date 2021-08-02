@@ -44,6 +44,7 @@ const ProductListScreen = ({ history, match }) => {
     if (!userInfo || !userInfo.isAdmin) {
       history.push('/login')
     }
+    //
 
     if (successCreate) {
       history.push(`/admin/product/${createdProduct._id}/edit`)
@@ -104,7 +105,7 @@ const ProductListScreen = ({ history, match }) => {
               </tr>
             </thead>
             <tbody>
-              {products.map((product) => (
+              {products.reverse().map((product) => (
                 <tr key={product._id}>
                   <td>{product._id}</td>
                   <td>{product.name}</td>

@@ -48,7 +48,7 @@ const OrderListScreen = ({ history }) => {
             </tr>
           </thead>
           <tbody>
-            {orders.map((order) => (
+            {orders.reverse().map((order) => (
               <tr key={order._id}>
                 <td>{order._id}</td>
                 <td>{order.user && order.user.name}</td>
@@ -60,11 +60,7 @@ const OrderListScreen = ({ history }) => {
                   ) : (
                     <i className='fas fa-times' style={{ color: 'red' }}></i>
                   )}
-                  <ConfirmDialog className="confirm-btn"
-
-                    
                  
-                  />
                 </td>
                 <td>
                   {order.isDelivered ? (
