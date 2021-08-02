@@ -86,7 +86,7 @@ const updateOrderToDelivered = asyncHandler(async (req, res) => {
   const order = await Order.findById(req.params.id)
 
   if (order) {
-    currentTime = new Date().toLocaleString('zh-TW', {timeZone: 'Asia/Taipei'})
+    currentTime = new Date().toLocaleString('zh-HK', {timeZone: 'UTC'})
     order.isDelivered = true
     order.deliveredAt = currentTime
 
