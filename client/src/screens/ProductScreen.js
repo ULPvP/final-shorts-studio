@@ -117,7 +117,7 @@ const ProductScreen = ( { history, match } ) => {
     // }
     else {
 
-      console.log( tempPrice )
+     
       history.push( `/cart/${ match.params.id }?qty=${ qty }?option=${ option }` )
       //setTempPrice( tempPrice )
     }

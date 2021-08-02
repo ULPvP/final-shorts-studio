@@ -18,7 +18,7 @@ const PlaceOrderScreen = ({ history }) => {
   } )
   // const price_list = choiceJson.map( item => Object.values( item )[ 1 ] )
   // const thePrice = cartItems
-  console.log(cart)
+
   
  
 

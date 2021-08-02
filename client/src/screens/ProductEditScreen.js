@@ -84,7 +84,7 @@ const ProductEditScreen = ({ match, history }) => {
 
     // const choice_obj = choicesObj.map(result => result)
 
-   console.log(choicesObj)
+
     e.preventDefault()
     dispatch(
       updateProduct({
@@ -99,7 +99,7 @@ const ProductEditScreen = ({ match, history }) => {
         choicesObj,
       })
     )
-    console.log(choicesObj)
+
   }
 
 
