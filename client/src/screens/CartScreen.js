@@ -48,7 +48,7 @@ const CartScreen = ( { match, location, history } ) => {
   return (
     <Row>
       <Col md={ 8 }>
-        <h1>Shopping Cart</h1>
+        <h1>購物車</h1>
         { cartItems.length === 0 ? (
           <Message>
             你的購物車目前是空的 <Link to='/'>按此返回</Link>
