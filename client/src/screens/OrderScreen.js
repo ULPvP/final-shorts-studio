@@ -127,7 +127,7 @@ const OrderScreen = ({ match, history }) => {
               
               {order.isDelivered ? (
                 <Message variant='success'>
-                  Delivered on {order.deliveredAt.toLocaleString('zh-TW', {timeZone: 'Asia/Taipei'})}
+                  Delivered on {order.deliveredAt}
                 </Message>
               ) : (
                 <Message variant='danger'>訂單尚未完成，並將在完成後在此顯示完成，如一段時間沒回應，請刷新本頁或者聯係工作室，謝謝</Message>

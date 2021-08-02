@@ -87,7 +87,7 @@ const updateOrderToDelivered = asyncHandler(async (req, res) => {
 
   if (order) {
     order.isDelivered = true
-    order.deliveredAt = new Date()
+    order.deliveredAt = new Date().toLocaleString('zh-TW', {timeZone: 'Asia/Taipei'});
 
     const updatedOrder = await order.save()
 
