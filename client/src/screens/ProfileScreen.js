@@ -145,7 +145,7 @@ const ProfileScreen = ({ location, history }) => {
                   </td>
                   <td>
                     {order.isDelivered ? (
-                      order.deliveredAt.substring(0, 10)
+                      order.deliveredAt.toLocaleString('zh-TW', {timeZone: 'Asia/Taipei'})
                     ) : (
                       <i className='fas fa-times' style={{ color: 'red' }}></i>
                     )}
