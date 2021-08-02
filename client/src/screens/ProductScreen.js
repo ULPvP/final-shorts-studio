@@ -112,9 +112,9 @@ const ProductScreen = ( { history, match } ) => {
       setEquals0( "請先選擇選項，再加入購物車" );
 
     }
-    else if(isMoreThanOne){
-      setCartLimit("每次限買一項產品，如果想結賬或刪除，請至購物車")
-    }
+    // else if(isMoreThanOne){
+    //   setCartLimit("每次限買一項產品，如果想結賬或刪除，請至購物車")
+    // }
     else {
 
       console.log( tempPrice )
