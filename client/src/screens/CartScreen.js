@@ -20,21 +20,21 @@ const CartScreen = ( { match, location, history } ) => {
   const cart = useSelector( ( state ) => state.cart )
   const { cartItems } = cart
   const { shippingAddress } = cart
-  const [option,setOption] = useState(shippingAddress.option)
+  const [ option, setOption ] = useState( shippingAddress.option )
 
   useEffect( () => {
     if ( productId ) {
 
-      console.log(optionURL)
-      dispatch( addToCart( productId, qty,optionURL ) )
+      console.log( optionURL )
+      dispatch( addToCart( productId, qty, optionURL ) )
     }
-  }, [ dispatch, productId, qty ] )
+  }, [ dispatch, productId, qty, optionURL ] )
 
   const removeFromCartHandler = ( id ) => {
     dispatch( removeFromCart( id ) )
   }
   const checkoutHandler = () => {
-    
+
     history.push( `/login?redirect=shipping` )
   }
   axios.get( `/api/products/${ url_id }` ).then( res => {
@@ -51,7 +51,7 @@ const CartScreen = ( { match, location, history } ) => {
         <h1>Shopping Cart</h1>
         { cartItems.length === 0 ? (
           <Message>
-            Your cart is empty <Link to='/'>Go Back</Link>
+            你的購物車目前是空的 <Link to='/'>按此返回</Link>
           </Message>
         ) : (
           <ListGroup variant='flush'>
@@ -75,7 +75,7 @@ const CartScreen = ( { match, location, history } ) => {
                         )
                       }
                     >
-                      { [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25 ].map( ( x ) => (
+                      { [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25 ].map( ( x ) => (
                         <option key={ x + 1 } value={ x + 1 }>
                           { x + 1 }
                         </option>
