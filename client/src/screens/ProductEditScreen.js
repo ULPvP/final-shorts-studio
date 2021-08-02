@@ -20,7 +20,7 @@ const ProductEditScreen = ({ match, history }) => {
   const [countInStock, setCountInStock] = useState(0)
   const [description, setDescription] = useState('')
   const [uploading, setUploading] = useState(false)
-
+  const [inputList, setInputList] = useState([{ choice: "", price: "" }]);
   const dispatch = useDispatch()
 
   const productDetails = useSelector((state) => state.productDetails)
@@ -34,6 +34,10 @@ const ProductEditScreen = ({ match, history }) => {
   } = productUpdate
 
   useEffect(() => {
+   
+    if( product.choicesObj) {
+      setInputList(JSON.parse(product.choicesObj))
+    }
     if (successUpdate) {
       dispatch({ type: PRODUCT_UPDATE_RESET })
       history.push('/admin/productlist')
@@ -98,7 +102,7 @@ const ProductEditScreen = ({ match, history }) => {
     console.log(choicesObj)
   }
 
-  const [inputList, setInputList] = useState([{ choice: "", price: "" }]);
+
 
   // handle input change
   const handleInputChange = (e, index) => {
