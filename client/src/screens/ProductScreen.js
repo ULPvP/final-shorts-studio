@@ -15,6 +15,7 @@ import { addToCart, addToPrice } from '../actions/cartActions'
 import {
   listProductDetails,
   createProductReview,
+  deleteProductReview
 } from '../actions/productActions'
 import { PRODUCT_CREATE_REVIEW_RESET } from '../constants/productConstants'
 import axios from 'axios'
@@ -50,6 +51,13 @@ const ProductScreen = ( { history, match } ) => {
   const compareObject = ( x, y ) => {
     for ( let i = 0; i < x.length; i++ ) {
       if ( x[ i ].value === y.value ) {
+        return i
+      }
+    }
+  }
+  const compareReviews = ( x, y ) => {
+    for ( let i = 0; i < x.length; i++ ) {
+      if ( x[ i ] === y ) {
         return i
       }
     }
@@ -107,17 +115,27 @@ const ProductScreen = ( { history, match } ) => {
     }
   }, [ dispatch, match, successProductReview ] )
 
+  const CommentDelete = ( review ) => {
+  
+    const review_index = compareReviews(product.reviews,review)
+
+    dispatch(deleteProductReview(product._id,review_index)) 
+
+
+    
+  }
   const addToCartHandler = () => {
     if ( tempPrice === 0 ) {
       setEquals0( "請先選擇選項，再加入購物車" );
 
     }
+
     // else if(isMoreThanOne){
     //   setCartLimit("每次限買一項產品，如果想結賬或刪除，請至購物車")
     // }
     else {
 
-     
+
       history.push( `/cart/${ match.params.id }?qty=${ qty }?option=${ option }` )
       //setTempPrice( tempPrice )
     }
@@ -264,13 +282,19 @@ const ProductScreen = ( { history, match } ) => {
                     <Rating value={ review.rating } />
                     <p>{ review.createdAt.substring( 0, 10 ) }</p>
                     <p>{ review.comment }</p>
+                    { userInfo &&
+                      userInfo.isAdmin &&(
+                        <button onClick={() => CommentDelete(review) }>
+                          <i className='fas fa-times' style={ { color: 'red' } }></i>
+                        </button>
+                      ) }
                   </ListGroup.Item>
                 ) ) }
                 <ListGroup.Item>
                   <h2>撰寫評論</h2>
                   { successProductReview && (
                     <Message variant='success'>
-                     成功上傳
+                      成功上傳
                     </Message>
                   ) }
                   { loadingProductReview && <Loader /> }
