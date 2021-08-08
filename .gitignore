@@ -1,7 +1,4 @@
 node_modules
 functions
-firebase.json
 public
-.firebaserc
-.firebase\hosting.cHVibGlj.cache
 .env
