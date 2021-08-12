@@ -6,7 +6,9 @@ import products from './data/products.js'
 import User from './models/userModel.js'
 import Product from './models/productModel.js'
 import Order from './models/orderModel.js'
+import Coupon from './models/couponModel.js'
 import connectDB from './config/db.js'
+import coupons from './data/coupons.js'
 
 dotenv.config()
 
@@ -27,6 +29,7 @@ const importData = async () => {
     })
 
     await Product.insertMany(sampleProducts)
+    await Coupon.insertMany(coupons)
 
     console.log('Data Imported!'.green.inverse)
     process.exit()

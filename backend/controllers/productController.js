@@ -38,6 +38,17 @@ const getProductById = asyncHandler(async (req, res) => {
     throw new Error('Product not found')
   }
 })
+const getCategoryById = asyncHandler(async (req, res) => {
+  const product = await Product.findById(req.params.id)
+
+  if (product) {
+    res.json(product.category)
+  } else {
+    res.status(404)
+    throw new Error('Product not found')
+  }
+})
+
 
 // @desc    Delete a product
 // @route   DELETE /api/products/:id
@@ -105,7 +116,7 @@ const updateProduct = asyncHandler(async (req, res) => {
     res.json(updatedProduct)
   } else {
     res.status(404)
-    throw new Error('Product not found')
+    res.json({message:"Product Not Found"})
   }
 })
 
@@ -146,7 +157,7 @@ const createProductReview = asyncHandler(async (req, res) => {
     res.status(201).json({ message: 'Review added' })
   } else {
     res.status(404)
-    throw new Error('Product not found')
+    res.json({message:"Product Not Found"})
   }
 })
 
@@ -167,4 +178,5 @@ export {
   updateProduct,
   createProductReview,
   getTopProducts,
+  getCategoryById ,
 }

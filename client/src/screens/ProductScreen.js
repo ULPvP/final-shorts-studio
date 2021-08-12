@@ -129,6 +129,9 @@ const ProductScreen = ( { history, match } ) => {
       setEquals0( "請先選擇選項，再加入購物車" );
 
     }
+    else if(isMoreThanOne){
+      setEquals0("目前購物車只能買一項產品，請你到購物車刪除貨品，或進行付款")
+    }
 
     // else if(isMoreThanOne){
     //   setCartLimit("每次限買一項產品，如果想結賬或刪除，請至購物車")

@@ -16,6 +16,7 @@ const reviewSchema = mongoose.Schema(
   }
 )
 
+
 const productSchema = mongoose.Schema(
   {
     user: {
@@ -43,7 +44,7 @@ const productSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    reviews: [reviewSchema],
+    reviews: [ reviewSchema ],
     rating: {
       type: Number,
       required: true,
@@ -64,11 +65,11 @@ const productSchema = mongoose.Schema(
       required: true,
       default: 0,
     },
-    
+
     choicesObj: {
       type: Object,
       required: true,
-      default:0,
+      default: 0,
     },
   },
   {
@@ -76,6 +77,6 @@ const productSchema = mongoose.Schema(
   }
 )
 
-const Product = mongoose.model('Product', productSchema)
+const Product = mongoose.model( 'Product', productSchema )
 
 export default Product

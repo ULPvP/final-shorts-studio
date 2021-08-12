@@ -18,7 +18,8 @@ import UserEditScreen from './screens/UserEditScreen'
 import ProductListScreen from './screens/ProductListScreen'
 import ProductEditScreen from './screens/ProductEditScreen'
 import OrderListScreen from './screens/OrderListScreen'
-
+import CouponCreateScreen from './screens/CouponCreateScreen'
+import CouponListScreen from './screens/CouponListScreen'
 const App = () => {
   return (
     <Router>
@@ -48,6 +49,8 @@ const App = () => {
           />
           <Route path='/admin/product/:id/edit' component={ProductEditScreen} />
           <Route path='/admin/orderlist' component={OrderListScreen} />
+          <Route path='/admin/couponCreate' component={CouponCreateScreen} />
+          <Route path='/admin/couponList' component={CouponListScreen} />
           <Route path='/search/:keyword' component={HomeScreen} exact />
           <Route path='/page/:pageNumber' component={HomeScreen} exact />
           <Route

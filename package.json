@@ -8,6 +8,7 @@
     "yarn": "1.22.10"
   },
   "type": "module",
+  "proxy":"localhost:5000",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "heroku-postbuild": "npm run install-client && npm run build",

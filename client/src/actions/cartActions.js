@@ -6,14 +6,14 @@ import {
   CART_SAVE_PAYMENT_METHOD,
 } from '../constants/cartConstants'
 
-export const addToCart = ( id, qty, option ) => async ( dispatch, getState ) => {
+export const addToCart = ( id, qty, option,discount ) => async ( dispatch, getState ) => {
 
   
 
   const { data } = await axios.get( `/api/products/${ id }` )
   const JSObject = JSON.parse(data.choicesObj)
   const price_list = JSObject.map( item => Object.values( item )[ 1 ] )
-  const thePrice = price_list[option]
+  const thePrice = discount == 100 ? price_list[option] : price_list[option] * (discount /100)
   
   dispatch( {
     type: CART_ADD_ITEM,
