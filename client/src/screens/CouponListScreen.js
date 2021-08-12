@@ -54,7 +54,7 @@ const removeCoupon = (coupon) =>{
         </Col>
         <Col className='text-right'>
           <Button className='my-3' onClick={createCouponHandler}>
-            <i className='fas fa-plus'></i> Create Product
+            <i className='fas fa-plus'></i> Create Coupon
           </Button>
         </Col>
       </Row>

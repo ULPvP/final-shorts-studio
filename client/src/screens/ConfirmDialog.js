@@ -16,7 +16,6 @@ import {useDispatch, useSelector} from 'react-redux'
 import {payOrder} from '../actions/orderActions'
 
 
-import result from './PaymentResult'
 
 
 const options = [
@@ -52,7 +51,7 @@ function ConfirmationDialogRaw(props) {
     
    
     if(value === "確定將此項目設爲成功"){
-        payOrder('60b77b007eff560d9c375a2b',result(time))
+        payOrder('60b77b007eff560d9c375a2b')
     }
     onClose()
   };

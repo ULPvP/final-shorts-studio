@@ -6,7 +6,7 @@ import { Row, Col, ListGroup, Image, Card, Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import Message from '../components/Message';
 import Loader from '../components/Loader';
-import result from './PaymentResult';
+
 
 import {
   getOrderDetails,
@@ -112,10 +112,7 @@ const OrderScreen = ( { match, history } ) => {
   
   
 
-  const successPaymentHandler = ( paymentResult ) => {
 
-    dispatch( payOrder( orderId, result ) )
-  }
 
  
   const deliverHandler = () => {
@@ -134,7 +131,7 @@ const OrderScreen = ( { match, history } ) => {
           <ListGroup variant='flush'>
             <ListGroup.Item>
               <h1 id="topic-guide">已收到你的訂單，請先開支付寶HK掃描QR-Code，我們會在確認你已經付款後立即進行代儲，感謝您的等待</h1>
-              <img id="qr-code" src="https://cdn.discordapp.com/attachments/699134700547211274/870653607207378984/Screenshot_20210730-210612_AlipayHK.jpg"></img>
+              <img id="qr-code" src="https://i.imgur.com/T6Y1PtA.jpg"></img>
               <h2>Shipping</h2>
 
               <p>
