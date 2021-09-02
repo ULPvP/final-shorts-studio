@@ -95,7 +95,7 @@ const ProductScreen = ( { history, match } ) => {
       setOption( price_index );
       const pre_tempPrice = price_list[ price_index ]
       setTempPrice( pre_tempPrice )
-  
+
 
       // const compareIndex = options.findIndex(tempPrice.price)
     }
@@ -118,21 +118,21 @@ const ProductScreen = ( { history, match } ) => {
   }, [ dispatch, match, successProductReview ] )
 
   const CommentDelete = ( review ) => {
-  
-    const review_index = compareReviews(product.reviews,review)
 
-    dispatch(deleteProductReview(product._id,review_index)) 
+    const review_index = compareReviews( product.reviews, review )
+
+    dispatch( deleteProductReview( product._id, review_index ) )
 
 
-    
+
   }
   const addToCartHandler = () => {
     if ( tempPrice === 0 ) {
       setEquals0( "請先選擇選項，再加入購物車" );
 
     }
-    else if(isMoreThanOne){
-      setEquals0("目前購物車只能買一項產品，請你到購物車刪除貨品，或進行付款")
+    else if ( isMoreThanOne ) {
+      setEquals0( "目前購物車只能買一項產品，請你到購物車刪除貨品，或進行付款" )
     }
 
     // else if(isMoreThanOne){
@@ -256,13 +256,13 @@ const ProductScreen = ( { history, match } ) => {
                     <Row>
                       <Col>選項</Col>
                       <Col>
-                        <Select 
-                        formatOptionLabel={option => <div className="needsclick">{option.label}</div>}
-                        defaultValue={options[0]}
-                        options={ options } 
-                        onChange={ handleChange }
-                     
-                      />
+                        <Select
+                          optionRenderer={ option => <div className="needsclick">{ option.label }</div> }
+                          defaultValue={ options[ 0 ] }
+                          options={ options }
+                          onChange={ handleChange }
+
+                        />
 
                       </Col>
                     </Row>
@@ -280,23 +280,23 @@ const ProductScreen = ( { history, match } ) => {
                   </ListGroup.Item>
                 </ListGroup>
               </Card>
-              
-              <div id="disclaimer" style={{color: "red",fontWeight:'bold',fontSize:'12px'}}>
-              <h>聲明:</h>
-              <p>
-                
-                1.本網站所售遊戲點數卡均為官方卡，全部經正規渠道取貨，請顧客放心購買；
-              </p>
-              <p> 2.點數卡和遊戲幣、游戲商城商品等兌換比例請自行參照遊戲官網；
-              </p>
-              <p>  3.點數卡為一次性使用產品，若不是點數卡序號(及密碼)問題，恕不退換，請務必看清商品標題和描述。
-                購買前請確認此卡是否可充值到你的遊戲，如有疑問請到IG查詢或咨詢客服。
-              </p>
-              <p> 4.請慎防第三方詐騙，所有的聯繫方式均在我們的IG上公布為準，
-                若顧客與第三方交易所造成的損失，本公司將不會承擔。
-                為了確認該筆轉帳帳目為顧客本人操作轉賬，請提供相關資料給客服審核。
-              </p>
-              <p> 5.請勿將購買到的點數卡序號(及密碼)傳送給任何人，且勿於非官方網站內儲值該點數卡，避免受騙！</p>
+
+              <div id="disclaimer" style={ { color: "red", fontWeight: 'bold', fontSize: '12px' } }>
+                <h>聲明:</h>
+                <p>
+
+                  1.本網站所售遊戲點數卡均為官方卡，全部經正規渠道取貨，請顧客放心購買；
+                </p>
+                <p> 2.點數卡和遊戲幣、游戲商城商品等兌換比例請自行參照遊戲官網；
+                </p>
+                <p>  3.點數卡為一次性使用產品，若不是點數卡序號(及密碼)問題，恕不退換，請務必看清商品標題和描述。
+                  購買前請確認此卡是否可充值到你的遊戲，如有疑問請到IG查詢或咨詢客服。
+                </p>
+                <p> 4.請慎防第三方詐騙，所有的聯繫方式均在我們的IG上公布為準，
+                  若顧客與第三方交易所造成的損失，本公司將不會承擔。
+                  為了確認該筆轉帳帳目為顧客本人操作轉賬，請提供相關資料給客服審核。
+                </p>
+                <p> 5.請勿將購買到的點數卡序號(及密碼)傳送給任何人，且勿於非官方網站內儲值該點數卡，避免受騙！</p>
               </div>
             </Col>
           </Row>
@@ -312,8 +312,8 @@ const ProductScreen = ( { history, match } ) => {
                     <p>{ review.createdAt.substring( 0, 10 ) }</p>
                     <p>{ review.comment }</p>
                     { userInfo &&
-                      userInfo.isAdmin &&(
-                        <button onClick={() => CommentDelete(review) }>
+                      userInfo.isAdmin && (
+                        <button onClick={ () => CommentDelete( review ) }>
                           <i className='fas fa-times' style={ { color: 'red' } }></i>
                         </button>
                       ) }
