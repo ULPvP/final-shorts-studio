@@ -257,6 +257,7 @@ const ProductScreen = ( { history, match } ) => {
                       <Col>選項</Col>
                       <Col>
                         <Select 
+                        formatOptionLabel={option => <div className="needsclick">{option.label}</div>}
                         defaultValue={options[0]}
                         options={ options } 
                         onChange={ handleChange }
