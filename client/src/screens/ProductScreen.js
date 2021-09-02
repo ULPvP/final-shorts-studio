@@ -9,6 +9,7 @@ import Meta from '../components/Meta'
 import Select from 'react-select'
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
+import initReactFastclick from 'react-fastclick';
 
 
 import { addToCart, addToPrice } from '../actions/cartActions'
@@ -22,6 +23,7 @@ import axios from 'axios'
 import { bold } from 'colors'
 
 const ProductScreen = ( { history, match } ) => {
+  initReactFastclick();
   const [ qty, setQty ] = useState( 1 )
   const [ rating, setRating ] = useState( 0 )
   const [ comment, setComment ] = useState( '' )

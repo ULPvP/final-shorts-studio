@@ -19,6 +19,7 @@
     "react-confirm-button": "^0.1.0",
     "react-dom": "^16.13.1",
     "react-dropdown": "^1.9.2",
+    "react-fastclick": "^3.0.2",
     "react-helmet": "^6.1.0",
     "react-paypal-button-v2": "^2.6.2",
     "react-redux": "^7.2.1",
