@@ -49,7 +49,7 @@ const CartScreen = ( { match, location, history } ) => {
   const config = {
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${ userInfo.token }`,
+      Authorization: `Bearer ${ "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMTI5YjUzZTRlYTY1MDAxNWIyOGJkYiIsImlhdCI6MTYzMDU4NjEyNCwiZXhwIjoxNjMzMTc4MTI0fQ.SXcWmAQrKCfofh8-imU9Pdn9ebEGQZP9m0aIP47lvkw" }`,
     },
   }
 

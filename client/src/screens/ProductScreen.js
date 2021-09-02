@@ -95,6 +95,8 @@ const ProductScreen = ( { history, match } ) => {
       setOption( price_index );
       const pre_tempPrice = price_list[ price_index ]
       setTempPrice( pre_tempPrice )
+  
+
       // const compareIndex = options.findIndex(tempPrice.price)
     }
 
@@ -254,7 +256,12 @@ const ProductScreen = ( { history, match } ) => {
                     <Row>
                       <Col>選項</Col>
                       <Col>
-                        <Dropdown options={ options } onChange={ handleChange } value={ tempPrice } placeholder="請選擇" />;
+                        <Select 
+                        defaultValue={options[0]}
+                        options={ options } 
+                        onChange={ handleChange }
+                     
+                      />
 
                       </Col>
                     </Row>
