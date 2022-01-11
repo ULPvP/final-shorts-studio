@@ -10,6 +10,7 @@
   "type": "module",
   "proxy":"localhost:5000",
   "scripts": {
+    "heroku-start":"cd backend && npm start",
     "test": "echo \"Error: no test specified\" && exit 1",
     "heroku-postbuild": "npm run install-client && npm run build",
     "server": "node backend/server.js",
